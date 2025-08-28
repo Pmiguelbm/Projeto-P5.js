@@ -14,13 +14,9 @@ let planets = [
     { name: "Saturno", distance: 360, size: 18, speed: 0.008, color: [255, 215, 0], trail: [] }
 ];
 
-// Função de configuração inicial
 function setup() {
-    // Cria o canvas com tamanho responsivo
     let canvas = createCanvas(800, 600);
     canvas.parent('canvas-container');
-    
-    // Configura o fundo
     background(0);
     
     // Configura o modo de ângulo para radianos
@@ -29,7 +25,6 @@ function setup() {
 
 // Função principal de desenho (loop de animação)
 function draw() {
-    // Limpa o fundo com transparência para criar efeito de trilha
     if (showTrails) {
         background(0, 0, 0, 25);
     } else {
@@ -53,7 +48,6 @@ function draw() {
         drawPlanetTrails();
     }
     
-    // Desenha informações na tela
     drawInfo();
 }
 
@@ -132,8 +126,6 @@ function drawPlanet(x, y, planet) {
     fill(planet.color[0], planet.color[1], planet.color[2]);
     noStroke();
     ellipse(0, 0, planet.size, planet.size);
-    
-    // Adiciona brilho
     fill(255, 255, 255, 100);
     ellipse(-planet.size/4, -planet.size/4, planet.size/3, planet.size/3);
     
@@ -184,14 +176,11 @@ function drawInfo() {
     text("Status: " + (animationRunning ? "Executando" : "Pausado"), 10, 50);
     text("Trilhas: " + (showTrails ? "Ativadas" : "Desativadas"), 10, 70);
     
-    // Instruções
     textSize(12);
     text("Use os botões para controlar a simulação", 10, height - 40);
     
     pop();
 }
-
-// Funções de controle (chamadas pelos botões HTML)
 
 // Função para pausar/continuar a animação
 function toggleAnimation() {
@@ -211,7 +200,6 @@ function resetSimulation() {
 function toggleTrails() {
     showTrails = !showTrails;
     if (!showTrails) {
-        // Limpa as trilhas quando desativadas
         for (let planet of planets) {
             planet.trail = [];
         }
@@ -226,7 +214,6 @@ function mouseDragged() {
     }
 }
 
-// Função para redimensionar o canvas
 function windowResized() {
     resizeCanvas(800, 600);
     background(0);

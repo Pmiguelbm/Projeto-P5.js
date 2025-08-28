@@ -1,4 +1,3 @@
-// Variáveis globais para controle da simulação
 let animationRunning = true;
 let showTrails = true;
 let angle = 0;
@@ -218,3 +217,4 @@ function windowResized() {
     resizeCanvas(800, 600);
     background(0);
 }
+
